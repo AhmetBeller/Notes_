@@ -1,0 +1,12 @@
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\bin\Debug\netcoreapp2.0\Notes.deps.json
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\bin\Debug\netcoreapp2.0\Notes.runtimeconfig.json
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\bin\Debug\netcoreapp2.0\Notes.runtimeconfig.dev.json
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\bin\Debug\netcoreapp2.0\Notes.dll
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\bin\Debug\netcoreapp2.0\Notes.pdb
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\obj\Debug\netcoreapp2.0\Notes.csproj.CoreCompileInputs.cache
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\obj\Debug\netcoreapp2.0\Notes.AssemblyInfoInputs.cache
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\obj\Debug\netcoreapp2.0\Notes.AssemblyInfo.cs
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\obj\Debug\netcoreapp2.0\Notes.dll
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\obj\Debug\netcoreapp2.0\Notes.pdb
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes\obj\Debug\netcoreapp2.0\Notes.csprojResolveAssemblyReference.cache

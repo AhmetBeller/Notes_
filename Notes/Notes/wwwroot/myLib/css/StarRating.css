@@ -1,0 +1,37 @@
+﻿body {
+}
+
+.rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    font-size: 30px;
+    margin-left: -15px;
+}
+
+.rating span.star, .rating span.star {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+
+}
+
+.rating span.star:hover, .rating span.star:hover {
+    cursor: pointer;
+}
+
+.rating span.star:before, .rating span.star:before {
+    content: "★";
+    padding-right: 5px;
+}
+
+.rating span.star:hover:before, .rating span.star:hover:before, .rating span.star:hover ~ span.star:before, .rating span.star:hover ~ span.star:before {
+    content: "★";
+    color: #f1c81d;
+}
+
+.rating span.star.active::before, .rating span.star.active::before, .rating span.star.active ~ span.star::before, .rating span.star.active ~ span.star::before {
+    color: #f1c81d;
+    content: "★";
+}
+

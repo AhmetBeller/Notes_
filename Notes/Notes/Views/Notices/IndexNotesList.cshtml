@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Notes.Models.Notice>
+
+@{
+    ViewData["Title"] = "IndexNotesList";
+}
+
+<h2 style="margin-top: 50px">Übersicht Notizen</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    <a asp-action="IndexNotesList" asp-controller="Notices" asp-route-orderBy="Title" >@Html.DisplayNameFor(model => model.Title)</a>
+                </th>               
+                <th>
+                    <a asp-action="IndexNotesList" asp-controller="Notices" asp-route-orderBy="Importance">@Html.DisplayNameFor(model => model.Importance)</a>
+                </th>
+                <th>
+                    <a asp-action="IndexNotesList" asp-controller="Notices" asp-route-orderBy="Date">@Html.DisplayNameFor(model => model.Date)</a>
+                </th>
+                <th>
+                    <a asp-action="IndexNotesList" asp-controller="Notices" asp-route-orderBy="State">@Html.DisplayNameFor(model => model.State)</a>
+                </th>
+            <th>
+                <a asp-action="IndexNotesList" asp-controller="Notices" asp-route-orderBy="Creator">@Html.DisplayNameFor(model => model.Creator)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>            
+            <td style="position: center">
+                @Html.DisplayFor(modelItem => item.Importance)
+            </td>
+            <td style="position: center">
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Creator.FirstName) @Html.DisplayFor(modelItem => item.Creator.SecondName)
+            </td>
+            <td>
+                @if((User.Identity.IsAuthenticated && User.Identity.Name.Equals(item.Creator.Email)) || User.IsInRole("Administrator"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Bearbeiten</a> 
+                } 
+                |
+                @if ((User.Identity.IsAuthenticated && User.Identity.Name.Equals(item.Creator.Email)) || User.IsInRole("Administrator"))
+                {
+                    <a asp-action="Delete" asp-route-id="@item.Id">Löschen</a>
+                }              
+            </td>
+        </tr> 
+}
+    </tbody>
+</table>

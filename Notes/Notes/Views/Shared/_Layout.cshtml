@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Notes</title>
+
+    <environment include="Development">   
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />        
+        <link rel="stylesheet" href="~/css/site.css"/>
+        <link rel="stylesheet" href="~/myLib/css/tableStyle.css"/>
+        <link rel="stylesheet" href="~/myLib/css/CreateStyle.css"/>
+        <link rel="stylesheet" href="~/myLib/css/starRating.css"/>
+        <link rel="stylesheet" href="~/myLib/css/checkBoxStyle.css"/>
+        <link rel="stylesheet" href=@ViewBag.Styler />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" /> 
+    </environment>        
+</head>
+
+<body id="myBody" >
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-styler="default" class="navbar-brand">Startseite</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">                   
+                  
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <p style="margin-left: 35px; margin-bottom: 7px;">
+                            <form>
+                                <button asp-action="Create" asp-controller="Notices" class="btn btn-warning" style="border-radius: 12px; margin-left: 5px">
+                                    <img src="~/images/CreateNotes.png" style="vertical-align: middle; width: 20px;">Neu
+                                </button>
+                            </form>
+                        </li>
+                        <li><a asp-area="" asp-controller="Notices" asp-action="IndexNotesList" asp-route-styler="default">Notizen</a></li>
+                        <li><a asp-area="" asp-controller="Account" asp-action="ApplicationUserIndex" asp-route-styler=@ViewBag.Styler>Mitglieder</a></li>      
+                        <li style="color: coral; margin-top: 17px; margin-left:15px">Hintergrund</li>     
+                        <li class="dropdown-toggle" style="margin-top: 17px; margin-left: 15px" onclick="myFunction()">
+                            <select data-style="btn-warning" id="myStyler">
+                                <option style="background: transparent; color:black" value="transparent">Standard</option>
+                                <option style="background: aqua; color:black" value="aqua">Aqua</option>
+                                <option style="background: greenyellow; color:black" value="greenyellow">GreenYellow</option>
+                                <option style="background: darkorange; color:black" value="darkorange">DarkOrange</option>
+                                <option style="background: deeppink; color:black" value="deeppink">DeepPink</option>
+                            </select>
+                        </li>
+                    }              
+                </ul>
+                <ul>
+                    @await Html.PartialAsync("_LoginPartial")                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container body-content">   
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; 2017 - Notes</p>
+    </footer>
+</div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>    
+        <script src="~/myLib/js/Styler.js"></script>
+    </environment>
+<environment exclude="Development">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            crossorigin="anonymous"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</environment>
+
+@RenderSection("Scripts", required: false)
+
+
+</body>
+</html>

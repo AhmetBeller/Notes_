@@ -1,0 +1,63 @@
+﻿
+@model IEnumerable<Notes.Models.ApplicationUser>
+
+@{
+    ViewData["Title"] = "ApplicationUserIndex";
+}
+
+<h2 style="margin-top: 50px">Übesicht Mitglieder</h2>
+    
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondName)
+        </th>               
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th> 
+        <th>
+            Administrator
+        </th>      
+        <th>
+            User
+        </th>                
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondName)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>   
+            <td>                               
+                @if (item.Roles.Equals("Administrator"))
+                {
+                    <label>
+                        <input type="checkbox" checked="checked" onclick="return false;"/>
+                    </label>
+                }
+            </td> 
+            <td>
+                @if (item.Roles.Equals("User"))
+                {
+                    <label>
+                        <input type="checkbox" checked="checked" onclick="return false;" />
+                    </label>
+                }
+            </td> 
+
+        </tr>
+    }
+    </tbody>
+</table>

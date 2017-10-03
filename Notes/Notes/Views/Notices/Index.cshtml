@@ -1,0 +1,139 @@
+﻿@using Microsoft.AspNetCore.Mvc.ApiExplorer
+@model IEnumerable<Notes.Models.Notice>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    @@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+</style>
+<div class="container-fluid">
+    <div class="btn-group btn-group-justified" role="group" style="margin-top: 40px;">
+        <div class="col-md-3" style="margin-bottom: -15px; margin-top: -15px;">
+            <h4>
+                <img src="~/images/filter.png" style="width: 40px"> : @ViewBag.Filter</img>
+            </h4>                      
+        </div>
+        <div class="col-md-3">
+            <a asp-action="Index" asp-controller="Notices" asp-route-styler="Styler" class="btn btn-warning" style="border-radius: 12px; width: 100%; margin-top: 5px">Styler</a>
+        </div> 
+        <div class="col-md-6">
+            <a asp-action="Index" asp-controller="Notices" asp-route-styler="default" class="btn btn-danger" style="border-radius: 12px; width: 100%; margin-top: 5px">Alle</a>
+        </div>  
+    </div>
+
+    <div class="btn-group btn-group-justified" role="group">
+        <div class="col-md-3 col-xs-12 ">
+            <a asp-action="Index" asp-controller="Notices" asp-route-orderBy="ByFinished" class="btn btn-info" style="border-radius: 12px; width: 100%; margin-top: 5px">Abgeschlossen</a>
+        </div>
+        <div class="col-md-3 col-xs-12 ">
+            <a asp-action="Index" asp-controller="Notices" asp-route-orderBy="ByDate" class="btn btn-info" style="border-radius: 12px; width: 100%; margin-top: 5px">Datum</a>
+        </div>
+        <div class="col-md-3 col-xs-12">
+            <a asp-action="Index" asp-controller="Notices" asp-route-orderBy="ByImportance" class="btn btn-info" style="border-radius: 12px; width: 100%; margin-top: 5px">Wichtigkeit</a>
+        </div>
+         <div class="col-md-3 col-xs-12">
+            <a asp-action="Index" asp-controller="Notices" asp-route-orderBy="HiddenFinished" class="btn btn-info" style="border-radius: 12px; width: 100%; margin-top: 5px">Unbeendet</a>
+         </div>
+    </div>
+    <hr style="background-color: red; height: 1px; border: 0;" />
+</div>
+
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (var item in Model)
+    {
+        var finishInfo = item.Date.Date > DateTime.Now.Date ? "Irgendwann" : "Heute";
+        var finishEndInfo = item.State && item.Date.Date == DateTime.Now.Date ? "[Heute]" : string.Empty;
+        
+        var path = "images/stars-" + item.Importance + ".png";
+        <span width="20px">
+            <img src="@path" width="20%" height="10%" />
+        </span>
+
+        <div class="table-responsive" style="border-radius: 25px;">
+            <table class="table" id="t01">
+                <tr>
+                    <th>
+                        <h5>
+                            <div style="text-align: center; color: gold;">
+                                @item.Date.ToShortDateString()
+                            </div>
+                            <div style="text-align: center; color: gold; margin-top: 2px">
+                                @item.Date.ToLongTimeString()
+                            </div>
+                        </h5>
+                    </th>
+                    <th>
+                        <h4 style="word-wrap: break-word; width: 100%">@Html.DisplayFor(modelItem => item.Title)</h4>
+                    </th>
+                    <th>
+                        <h5 style="color: gold">@Html.DisplayFor(modelItem => item.Creator.FirstName) @Html.DisplayFor(modelItem => item.Creator.SecondName)</h5>
+                    </th>
+                </tr>
+                <tr>
+                    <td style="text-align: center; vert-align: middle">
+                        <div style="margin-top: 5px"><b>@finishInfo</b></div>
+                        <div class="form-group" id="checkbox">Finished
+                            <div class="btn btn-outline-info">
+                                <label>
+                                    <input type="checkbox" asp-for="@item.State" onclick="return false;"/> 
+                                </label>                               
+                            </div>
+                        </div>   
+                        <div style="margin-top: -35px; margin-left:-65px">@finishEndInfo</div>
+                    </td>
+                    <td style="text-align: left">
+                        <textarea disabled="disabled" cols="45" rows="10" style="width: 100%; height: 100px; resize: none; overflow-x: auto">@Html.DisplayFor(modelItem => item.Description)</textarea>
+                    </td>
+                    <td style="text-align: center; vert-align: middle">
+                        @if ((User.Identity.IsAuthenticated && User.Identity.Name.Equals(item.Creator.Email)) || User.IsInRole("Administrator"))
+                        {
+                            <form style="margin-top: 10px">
+                                <button asp-action="Edit" asp-controller="Notices" class="btn btn-success" asp-route-id="@item.Id" style="width: 100%">Bearbeiten</button>
+                                <br />
+                                <button asp-action="Delete" asp-controller="Notices" class="btn btn-danger" asp-route-id="@item.Id" style="width: 100%; margin-top: 10px">Löschen</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <form style="margin-top: 20px; margin-left:18px">
+                                <p><b>Bearbeitung</b></p>
+                                <p><b>nicht erlaub</b>t</p>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+}
+else
+{
+    <div class="alert alert-success">
+        <strong>Keine TODO's gefunden</strong>
+    </div>
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

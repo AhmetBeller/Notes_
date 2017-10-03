@@ -1,0 +1,16 @@
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\xunit.runner.utility.netstandard15.dll
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netstandard15.dll
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\Notes_Test.deps.json
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\Notes_Test.runtimeconfig.json
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\Notes_Test.runtimeconfig.dev.json
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\Notes_Test.dll
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\Notes.dll
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\Notes.pdb
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\obj\Debug\netcoreapp2.0\Notes_Test.csprojResolveAssemblyReference.cache
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\obj\Debug\netcoreapp2.0\Notes_Test.csproj.CoreCompileInputs.cache
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\obj\Debug\netcoreapp2.0\Notes_Test.AssemblyInfoInputs.cache
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\obj\Debug\netcoreapp2.0\Notes_Test.AssemblyInfo.cs
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\bin\Debug\netcoreapp2.0\Notes_Test.pdb
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\obj\Debug\netcoreapp2.0\Notes_Test.dll
+D:\Schulen\Schule_HSR\ASP.Net\Notes\Notes_Test\obj\Debug\netcoreapp2.0\Notes_Test.pdb

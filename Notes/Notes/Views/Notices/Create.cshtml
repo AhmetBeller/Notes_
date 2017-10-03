@@ -1,0 +1,82 @@
+﻿@using Microsoft.CodeAnalysis
+@model Notes.Models.Notice
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br/>
+<h2>Neue Notiz</h2>
+<hr />
+<br/>
+<form asp-action="Create">
+<div class="row">
+    <div class="create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>        
+        <div class="form-group">
+            <img src="~/images/title.png" style="vertical-align: middle; width: 30px;"/>
+            <input asp-for="Title" class="form-control" style="background: beige" placeholder="Title"/>
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">  
+            <img src="~/images/description.png" style="vertical-align: middle; width: 30px;" />
+            <textarea asp-for="Description" id="createTextarea" class="form-control" placeholder="Beschreibung"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4 style="font-weight:bold">Datum</h4>
+                    <div class="col-sm-1">
+                        <img src="~/images/Calender.png" style="vertical-align: middle; width: 30px; margin-left: -15px; margin-right: 2px"/>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="form-group" style="width: 183px; margin-left: -15px">
+                            <input asp-for="Date" class="form-control" placeholder="Datum und Zeit(24h)"/>
+                            <span asp-validation-for="Date" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h4 style="font-weight: bold">Wichtigkeit</h4>
+                    <div class="form-group" style="margin-top: -5px">
+                        <div class="col-lg-8">
+                            <span class="rating">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    var starClass = "star";
+                                    if (Model != null && Model.Importance == 6 - i)
+                                    {
+                                        starClass += " active";
+                                    }
+                                    <span data-value="@(6 - i)" class="@starClass"></span>                                     
+                                }
+                            </span>
+                        </div>
+                        <span asp-validation-for="Importance" class="text-danger"></span>
+                        <input asp-for="Importance"/>              
+                    </div>
+                </div>                            
+            </div>
+    </div> 
+    <div class="col-sm-6" style="margin-top: 10px">
+        <div class="form-group">
+            <input type="submit" value="Erstellen" class="btn btn-info"/>
+        </div>
+    </div>  
+</div>
+</form>
+
+    <div>
+        <a asp-action="Index" asp-route-styler="default">Startseite</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        <script src="~/myLib/js/rating.js"></script>               
+    }
+
+
+
+

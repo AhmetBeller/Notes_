@@ -1,0 +1,11 @@
+﻿body {
+}
+
+#checkbox input:checked {
+    height: 35px;
+    width: 35px;
+}
+#checkbox input:not(:checked) {
+    height: 20px;
+    width: 20px;
+}
